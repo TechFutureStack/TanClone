@@ -1,0 +1,29 @@
+/* src/styles/AnimatedNumber.css */
+
+.animated-number-wrapper {
+  display: flex; /* Arrange digits horizontally */
+  font-family: 'Poppins', sans-serif; /* Or your preferred font for numbers */
+  font-size: 1.5em; /* Match stat-value size */
+  font-weight: 600; /* Match stat-value weight */
+  color: #333333; /* Default color for digits */
+  overflow: hidden; /* Hide anything outside the digits' boundaries */
+  height: 1.2em; /* Ensure enough height for the digits */
+  line-height: 1.2;
+  align-items: flex-end; /* Align digits to the bottom of their container */
+}
+
+.animated-digit {
+  display: inline-block; /* Treat each digit as a block to control vertical movement */
+  width: 0.7em; /* Fixed width for each digit, adjust as needed */
+  text-align: center;
+  /* transition: transform 0.1s ease-out; /* Smooth transition if you want subtle scroll */
+  position: relative;
+  overflow: hidden; /* Hide numbers that are not in view */
+}
+
+/* Optional: If you want to refine the scrolling appearance of individual digits,
+   you might need more complex CSS (e.g., creating a list of numbers inside each span
+   and translating them) or use a dedicated animation library.
+   For now, the rapid number change in JS combined with `overflow: hidden` on the wrapper
+   will give a basic "scrolling" feel.
+*/

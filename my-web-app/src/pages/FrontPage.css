@@ -1,0 +1,21 @@
+/* src/pages/FrontPage.css */
+
+.front-page-layout {
+  width: 100%;
+  min-height: 100vh; /* Ensures the layout container covers full height */
+  display: flex;
+  flex-direction: column; /* Stacks banner, header, and main-content-area vertically */
+  /* We remove align-items and justify-content from here, as main-content-area will handle centering */
+}
+
+.main-content-area {
+  flex-grow: 1; /* This makes this div take up all available vertical space */
+  display: flex;
+  flex-direction: column; /* To center HeroSection within this area */
+  justify-content: center; /* Vertically center HeroSection within this area */
+  align-items: center; /* Horizontally center HeroSection within this area */
+  width: 100%; /* Ensure it spans full width */
+  box-sizing: border-box;
+  /* NEW: Add padding-top to push content below the fixed header/banner */
+  padding-top: 150px; /* Adjust this value based on the combined height of your top banner and navigation bar */
+}

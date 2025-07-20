@@ -1,0 +1,62 @@
+/* src/components/AnimatedWin50KLink.css */
+
+/* Styling for the "Win $50K" link itself */
+.win-50k-link-animated {
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 1em;
+  font-weight: 900;
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+
+  text-shadow:
+    0.5px 0 0 #ffffff,
+    -0.5px 0 0 #ffffff,
+    0 0.5px 0 #ffffff,
+    0 -0.5px 0 #ffffff,
+    1px 1px 1px rgba(0,0,0,0.2);
+
+  transition: color 0.3s ease;
+}
+
+.win-50k-link-animated:hover {
+  color: #FFD700;
+}
+
+/* --- Styles for the individual coin elements --- */
+.coin-splash {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-color: #FFD700;
+  border-radius: 50%;
+  box-shadow: 0 0 2px rgba(255, 215, 0, 0.8), 0 0 5px rgba(255, 215, 0, 0.5);
+  opacity: 0;
+  pointer-events: none;
+
+  top: 50%;
+  left: 50%;
+  /* Initial position using --start-x and --start-y */
+  transform: translate(-50%, -50%) translate(var(--start-x, 0), var(--start-y, 0));
+
+  animation: coinFly 0.8s ease-out forwards var(--animation-delay, 0s);
+}
+
+/* --- Keyframe animation for the coins flying out and fading --- */
+@keyframes coinFly {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) translate(var(--start-x, 0), var(--start-y, 0)) scale(0.8) rotate(0deg);
+  }
+  20% {
+    /* Initial upward movement, more pronounced */
+    transform: translate(-50%, -50%) translate(var(--start-x, 0), calc(var(--start-y, 0) - 25px)) scale(1) rotate(45deg);
+  }
+  100% {
+    opacity: 0; /* Fade out completely */
+    /* Use the pre-calculated --end-x and --end-y directly */
+    transform: translate(-50%, -50%) translate(var(--end-x, 0), var(--end-y, 0)) scale(0.5) rotate(180deg);
+  }
+}

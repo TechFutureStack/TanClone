@@ -1,0 +1,125 @@
+.smarter-consensus-section {
+  background-color: #18230F;
+  padding: 80px 20px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.smarter-consensus-title {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 3em;
+  font-weight: 700;
+  margin-bottom: 60px;
+  color: #ffffff;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr); /* 6 columns */
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* First 3 cards span 2 columns each */
+.feature-card:nth-child(-n+3) {
+  grid-column: span 2;
+}
+
+/* Last 2 cards span 3 columns each */
+.feature-card:nth-child(4),
+.feature-card:nth-child(5) {
+  grid-column: span 3;
+}
+
+.feature-card {
+  background-color: #1a1a1a;
+  border-radius: 15px;
+  padding: 30px;
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #18230F;
+  transition: transform 0.3s ease;
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+}
+
+.feature-card::before {
+  content: '';
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  left: var(--mouse-x);
+  top: var(--mouse-y);
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, #ff00ff, #00ffff, #ffff00, transparent);
+  filter: blur(50px);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1;
+  transition: opacity 0.2s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-8px);
+}
+
+.feature-card:hover::before {
+  opacity: 1;
+}
+
+.feature-card::after {
+  content: '';
+  position: absolute;
+  inset: 1px;
+  border-radius: inherit;
+  background-color: #000000;
+  z-index: 2;
+}
+
+.feature-title,
+.feature-description,
+.view-more-btn {
+  position: relative;
+  z-index: 3;
+}
+
+.feature-title {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.8em;
+  color: #FFF4B7;
+  margin-bottom: 15px;
+}
+
+.feature-description {
+  font-family: 'Poppins', sans-serif;
+  color: #ccc;
+  margin-bottom: 20px;
+}
+
+.view-more-btn {
+  display: inline-block;
+  padding: 10px 25px;
+  color: #FFF4B7;
+  border: 1px solid #FFF4B7;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.view-more-btn:hover {
+  background: #FFF4B7;
+  color: #000000;
+  box-shadow: 0 0 10px #FFF4B7;
+}
+
+@media (max-width: 768px) {
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+  .feature-card {
+    grid-column: auto !important;
+  }
+}

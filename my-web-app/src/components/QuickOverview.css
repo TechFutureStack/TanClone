@@ -1,0 +1,145 @@
+.quick-container {
+  background: #18230F;
+  padding: 60px 20px;
+  text-align: center;
+  color: white;
+}
+
+.quick-title {
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+}
+
+.quick-grid {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.quick-card {
+  background: transparent;
+  border: 1.5px solid #18230F;
+  border-radius: 20px;
+  padding: 30px 20px 20px;
+  width: 240px;
+  height: 280px;
+  position: relative;
+  overflow: visible;           /* <-- FIX: allow label above the card */
+  text-decoration: none;
+  color: white;
+  transition: transform 0.5s cubic-bezier(.42,0,.58,1.0), box-shadow 0.3s;
+  backdrop-filter: blur(6px);
+  outline: none;
+}
+
+.quick-card:hover,
+.quick-card--active {
+  transform: perspective(600px) rotateX(15deg);
+  box-shadow: 0 10px 25px rgba(255, 223, 0, 0.4); /* yellow glow */
+  z-index: 2;
+}
+
+.quick-card:focus-visible {
+  outline: 2px solid #ffdf00; /* use yellow for focus outline */
+  box-shadow: 0 0 0 4px rgba(255,223,0,.18);
+}
+
+.quick-icon {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 2;
+  filter: grayscale(1) brightness(0.75);
+  transition: filter 0.25s;
+}
+
+.quick-icon--active {
+  filter: none;
+}
+
+.quick-label {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.quick-sub {
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+.glow-ring {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,223,0,0.28), transparent 70%); /* yellow ring */
+  top: -30px;
+  left: calc(50% - 60px);
+  z-index: 1;
+  filter: blur(15px);
+  transition: all 0.3s ease;
+}
+
+.glow-label {
+  position: absolute;
+  top: -45px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;            /* white background for dark bg */
+  color: #111;                 /* dark text for contrast */
+  font-size: 0.9rem;
+  font-weight: bold;
+  padding: 4px 16px;
+  border-radius: 999px;
+  border: 2px solid #ffdf00;   /* subtle yellow border for pop */
+  z-index: 10;                 /* <-- FIX: higher than other elements */
+  opacity: 0;
+  text-transform: uppercase;
+  box-shadow: 0 2px 8px rgba(255,223,0,0.20); /* yellow glow */
+  animation: fadeinup 0.22s forwards;
+}
+
+@keyframes fadeinup {
+  from { opacity: 0; transform: translateX(-50%) translateY(10px);}
+  to   { opacity: 1; transform: translateX(-50%) translateY(0);}
+}
+
+.glow-line {
+  position: absolute;
+  width: 2px;
+  height: 40px;
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(to bottom, #FFD700, transparent); /* yellow line */
+  z-index: 2;
+  opacity: 0;
+  animation: fadeinline 0.19s 0.11s forwards; /* appear after label */
+}
+
+@keyframes fadeinline {
+  from { opacity: 0; height: 0; }
+  to   { opacity: 1; height: 40px; }
+}
+
+/* Responsive adjustments */
+@media (max-width: 800px) {
+  .quick-grid {
+    gap: 16px;
+  }
+  .quick-card {
+    width: 95vw;
+    height: auto;
+    min-height: 200px;
+    padding: 20px 10px 16px;
+  }
+  .quick-title {
+    font-size: 1.5rem;
+  }
+  .glow-label { font-size: 0.8rem; }
+}

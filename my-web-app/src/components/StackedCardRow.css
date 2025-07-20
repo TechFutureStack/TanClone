@@ -1,0 +1,113 @@
+.features-container {
+  padding: 2rem;
+  background: #0d1117; /* Elegant dark background */
+  color: #fff;
+  font-family: 'Segoe UI', sans-serif;
+  overflow: hidden;
+  position: relative;
+}
+
+.features-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  text-align: center;
+  color: #66fcf1;
+}
+
+.scroll-wrapper {
+  overflow: hidden;
+  position: relative;
+}
+
+.card-row {
+  display: flex;
+  gap: 1.5rem;
+  animation: scroll-left 35s linear infinite;
+  width: max-content;
+}
+
+/* Color themes for cards */
+.card-theme-1 { background: linear-gradient(135deg, #0f2027, #203a43); border-color: #00bcd4; }
+.card-theme-2 { background: linear-gradient(135deg, #1a2a6c, #b21f1f); border-color: #ff6b6b; }
+.card-theme-3 { background: linear-gradient(135deg, #2c3e50, #4ca1af); border-color: #4ca1af; }
+.card-theme-4 { background: linear-gradient(135deg, #42275a, #734b6d); border-color: #9b59b6; }
+.card-theme-5 { background: linear-gradient(135deg, #373b44, #4286f4); border-color: #4286f4; }
+.card-theme-6 { background: linear-gradient(135deg, #3e5151, #decba4); border-color: #decba4; }
+.card-theme-7 { background: linear-gradient(135deg, #1c92d2, #f2fcfe); border-color: #1c92d2; }
+.card-theme-8 { background: linear-gradient(135deg, #536976, #292e49); border-color: #708090; }
+
+.card {
+  flex: 0 0 240px;
+  height: 240px;
+  border-radius: 1.25rem;
+  padding: 1rem;
+  border: 1px solid;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.05);
+  position: relative;
+  transition: transform 0.3s ease, z-index 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+  overflow: hidden;
+  color: #fff;
+}
+
+.card:hover {
+  transform: scale(1.1);
+  z-index: 10;
+  box-shadow: 0 0 18px rgba(255, 255, 255, 0.2);
+}
+
+/* Icons */
+.card-icon {
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+  color: #ffffff;
+}
+
+/* Titles */
+.card-title {
+  font-weight: bold;
+  font-size: 1.15rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Description */
+.card-description {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: #f0f0f0;
+}
+
+/* Auto scroll */
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Comet effect inside cards */
+.card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 60%);
+  transform: rotate(45deg);
+  animation: comet-fall 3s linear infinite;
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+@keyframes comet-fall {
+  0% {
+    transform: translate(-100%, -100%) rotate(45deg);
+  }
+  100% {
+    transform: translate(100%, 100%) rotate(45deg);
+  }
+}

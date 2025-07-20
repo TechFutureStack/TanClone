@@ -1,0 +1,77 @@
+.tan-app-section {
+  background: #18181a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 85px 36px;
+  box-sizing: border-box;
+  width: 100vw;
+  min-height: 300px;
+  flex-wrap: wrap;
+}
+
+.tan-app-info {
+  max-width: 500px;
+  color: #fff;
+  z-index: 1;
+}
+
+.tan-app-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 28px;
+  letter-spacing: 0.01em;
+}
+
+.tan-app-highlight {
+  background: linear-gradient(90deg, #ffd700 30%, #ec008c 85%);
+  color: #111;
+  padding: 2px 12px;
+  border-radius: 6px;
+  font-weight: 900;
+  font-size: 1.1em;
+}
+
+.tan-app-desc {
+  font-size: 1.12rem;
+  color: #ccc;
+  opacity: 0.95;
+  margin-bottom: 36px;
+  line-height: 1.7;
+}
+
+.tan-app-btn {
+  display: inline-block;
+  padding: 13px 36px;
+  font-size: 1.11rem;
+  font-weight: 600;
+  background: linear-gradient(90deg, #ffe066 10%, #ec008c 90%);
+  color: #000;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: background 0.18s, transform 0.14s;
+  box-shadow: 0 4px 26px rgba(255, 223, 0, 0.09);
+  border: none;
+  outline: none;
+}
+
+.tan-app-btn:hover {
+  background: linear-gradient(90deg, #ec008c 10%, #ffe066 90%);
+  transform: scale(1.04) translateY(-2px);
+  color: #fff;
+}
+
+@media (max-width: 900px) {
+  .tan-app-section {
+    flex-direction: column;
+    padding: 56px 8vw;
+    min-height: 220px;
+  }
+  .tan-app-info {
+    max-width: 98vw;
+    text-align: center;
+  }
+  .tan-app-title {
+    font-size: 1.4rem;
+  }
+}
