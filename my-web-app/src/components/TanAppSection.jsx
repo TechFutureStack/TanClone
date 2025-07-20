@@ -1,5 +1,5 @@
 import React from "react";
-import "./TANAppSection.css";
+import "./TanAppSection.css";
 
 const TANAppSection = () => (
   <section className="tan-app-section">
