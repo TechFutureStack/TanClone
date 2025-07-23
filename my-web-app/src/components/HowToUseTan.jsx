@@ -1,54 +1,68 @@
-import React from "react";
-import "./HowToUseTan.css";
-import InfoIcon from "./info.png";
-import WalletIcon from "./wallet.png";
-import DownloadIcon from "./download.png";
-import SpendIcon from "./spend.png";
+// FlowChart.jsx
+import React, { useEffect, useRef, useState } from 'react';
+import './HowToUseTan.css';
 
 const steps = [
-  {
-    icon: InfoIcon,
-    label: "Inform yourself",
-  },
-  {
-    icon: WalletIcon,
-    label: "Choose your wallet",
-  },
-  {
-    icon: DownloadIcon,
-    label: "Get TAN",
-  },
-  {
-    icon: SpendIcon,
-    label: "Spend TAN",
-  },
+  { id: 1, title: 'Start', content: 'Begin the TAN journey' },
+  { id: 2, title: 'User Registers', content: 'Sign up securely' },
+  { id: 3, title: 'Select Wallet', content: 'Choose your digital wallet' },
+  { id: 4, title: 'Get TAN Token', content: 'Receive TAN tokens' },
+  { id: 5, title: 'Transaction Processing', content: 'Securely handle transactions' },
+  { id: 6, title: 'Success ', content: 'You are done!' },
 ];
 
-const HowToUseTan = () => (
-  <div className="tan-process-section">
-    <h2 className="tan-process-title">How To Use TAN</h2>
-    <div className="tan-process-flow">
-      {steps.map((step, idx) => (
-        <React.Fragment key={step.label}>
-          <div className="tan-process-step">
-            <div className="tan-process-icon-wrap">
-              <img
-                src={step.icon}
-                alt={step.label}
-                className="tan-process-icon"
-              />
-            </div>
-            <span className="tan-process-label">{step.label}</span>
-          </div>
-          {idx !== steps.length - 1 && (
-            <div className="tan-process-arrow">
-              <span />
-            </div>
-          )}
-        </React.Fragment>
-      ))}
-    </div>
-  </div>
-);
+const FlowChart = () => {
+  const chartRef = useRef(null);
+  const [activeStep, setActiveStep] = useState(0);
+  const [visible, setVisible] = useState(false);
 
-export default HowToUseTan;
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !visible) {
+          setVisible(true);
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    if (chartRef.current) observer.observe(chartRef.current);
+    return () => observer.disconnect();
+  }, [visible]);
+
+  useEffect(() => {
+    if (visible && activeStep < steps.length) {
+      const timer = setTimeout(() => {
+        setActiveStep((prev) => prev + 1);
+      }, 1000);
+      return () => clearTimeout(timer);
+    }
+  }, [activeStep, visible]);
+
+  return (
+    <div className="flowchart-wrapper" ref={chartRef}>
+      <h2 className="flowchart-title">TAN Flow</h2>
+      <div className="flowchart-horizontal">
+        {steps.map((step, index) => (
+          <React.Fragment key={step.id}>
+            <div className={`node-box ${activeStep > index ? 'active' : ''}`}>
+              <div className="bow-shape">
+                {activeStep > index && (
+                  <div className="box-content">
+                    <h3>{step.title}</h3>
+                    <p>{step.content}</p>
+                  </div>
+                )}
+              </div>
+            </div>
+            {index < steps.length - 1 && (
+              <div className={`connector ${activeStep > index ? 'active-line' : ''}`}></div>
+            )}
+          </React.Fragment>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default FlowChart;

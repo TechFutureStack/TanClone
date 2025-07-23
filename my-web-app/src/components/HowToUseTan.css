@@ -1,202 +1,118 @@
-.tan-process-section {
-  width: 100vw;
-  min-height: 250px;
-  background: #18230F;
-  color: #fff;
-  padding: 60px 0 30px;
-  box-sizing: border-box;
+/* FlowChart.css */
+
+.flowchart-wrapper {
+  background-color: #0e0e0e;
+  padding: 3rem 2rem;
+  overflow: hidden;
+  font-family: 'Poppins', sans-serif;
 }
 
-.tan-process-title {
+.flowchart-title {
   text-align: center;
-  font-size: 2.3rem;
-  font-weight: 700;
-  margin-bottom: 48px;
-  letter-spacing: 0.01em;
-}
-
-.tan-process-flow {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 32px;
-  flex-wrap: wrap;
-  width: 100%;
-}
-
-.tan-process-step {
-  background: #18230F;
-  border-radius: 15px;
-  width: 210px;
-  height: 85px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 18px;
-  border: 1.8px solid #18230F;
-  padding: 0;
-  box-sizing: border-box;
-  flex-shrink: 0;
-  position: relative;
-  overflow: visible;
-}
-
-.tan-process-step > * {
-  position: relative;
-  z-index: 2;
-}
-
-/* Sequential Glowing Border Animation */
-.tan-process-step::before {
-  content: "";
-  position: absolute;
-  inset: -3px;
-  border-radius: 17px;
-  z-index: 1;
-  pointer-events: none;
-  background: none;
-  box-shadow: 0 0 8px 3px rgba(255, 223, 0, 0);
-}
-
-/* Keyframes for sequential glow */
-@keyframes tan-border-glow-sequence {
-  0%, 25% {
-    box-shadow: 0 0 8px 3px rgba(255, 223, 0, 0);
-  }
-  50% {
-    box-shadow: 0 0 12px 6px rgba(255, 223, 0, 0.8);
-  }
-  100% {
-    box-shadow: 0 0 8px 3px rgba(255, 223, 0, 0);
-  }
-}
-
-/* Apply sequential animation to each process step (boxes are 1,3,5,7 because of arrows in between) */
-.tan-process-step:nth-child(1)::before {
-  animation-delay: 0s;
-  animation-duration: 8s;
-  animation-name: tan-border-glow-sequence;
-  animation-iteration-count: infinite;
-  animation-timing-function: ease-in-out;
-}
-.tan-process-step:nth-child(3)::before {
-  animation-delay: 2s;
-  animation-duration: 8s;
-  animation-name: tan-border-glow-sequence;
-  animation-iteration-count: infinite;
-  animation-timing-function: ease-in-out;
-}
-.tan-process-step:nth-child(5)::before {
-  animation-delay: 4s;
-  animation-duration: 8s;
-  animation-name: tan-border-glow-sequence;
-  animation-iteration-count: infinite;
-  animation-timing-function: ease-in-out;
-}
-.tan-process-step:nth-child(7)::before {
-  animation-delay: 6s;
-  animation-duration: 8s;
-  animation-name: tan-border-glow-sequence;
-  animation-iteration-count: infinite;
-  animation-timing-function: ease-in-out;
-}
-
-.tan-process-icon-wrap {
-  background: #181818;
-  border-radius: 50%;
-  width: 46px;
-  height: 46px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-right: 8px;
-  box-shadow: 0 1px 8px 0 rgba(255,223,0, 0.13);
-}
-
-.tan-process-icon {
-  width: 23px;
-  height: 23px;
-  object-fit: contain;
-}
-
-.tan-process-label {
-  font-size: 1rem;
-  font-weight: bold;
-  letter-spacing: 0.01em;
+  font-size: 2rem;
   color: #fff;
+  margin-bottom: 2rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700; /* Title in bold */
 }
 
-/* Animated Arrow Between Steps */
-.tan-process-arrow {
-  width: 55px;
+.flowchart-horizontal {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  position: relative;
+}
+
+.node-box {
+  position: relative;
+  width: 200px;
+  height: 150px;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: all 0.8s ease-in-out;
+}
+
+.node-box.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.bow-shape {
+  width: 100%;
+  height: 100%;
+  border: 2px solid #c103fa;
+  border-radius: 50% / 20%;
+  background: rgba(255, 255, 255, 0.03);
+  box-shadow: 0 0 15px #c103fa, inset 0 0 10px #c103fa;
   display: flex;
   align-items: center;
   justify-content: center;
+  color: #ffffff;
+  text-align: center;
+  padding: 1rem;
+  transition: box-shadow 0.4s ease;
+  font-family: 'Poppins', sans-serif;
 }
 
-.tan-process-arrow span {
-  display: block;
-  width: 48px;
-  height: 3px;
-  background: linear-gradient(90deg, #fff 12%, #ffd700 100%);
-  border-radius: 2px;
+.bow-shape h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #fff;
+  font-weight: 700; /* Strong title */
+}
+
+.bow-shape p {
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  color: #ccc;
+  font-weight: 100; /* Light weight for description */
+}
+
+.connector {
+  width: 80px;
+  height: 4px;
+  background: transparent;
   position: relative;
-  animation: arrow-move 2s linear infinite;
-  background-size: 200% 100%;
+  transition: background 1s ease;
 }
 
-.tan-process-arrow span::after {
+.connector::before {
   content: '';
   position: absolute;
-  right: -11px;
-  top: -6px;
-  border: 7px solid transparent;
-  border-left: 10px solid #ffd700;
-  border-radius: 3px;
-  animation: arrowhead-move 2s ease-in-out infinite;
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, #c103fa, #c103fa);
+  box-shadow: 0 0 12px #c103fa;
+  animation: none;
 }
 
-@keyframes arrow-move {
-  0% {
-    background-position: 0% 50%;
-  }
-  100% {
-    background-position: 100% 50%;
-  }
+.active-line::before {
+  width: 100%;
+  animation: trainFlow 1s forwards;
 }
 
-@keyframes arrowhead-move {
-  0%, 100% {
-    transform: translateX(0);
+@keyframes trainFlow {
+  from {
+    width: 0%;
   }
-  50% {
-    transform: translateX(4px);
+  to {
+    width: 100%;
   }
 }
 
-@media (max-width: 900px) {
-  .tan-process-flow {
+@media (max-width: 768px) {
+  .flowchart-horizontal {
     flex-direction: column;
-    gap: 22px;
   }
-  .tan-process-step {
-    width: 210px;
-    height: 85px;
+
+  .connector {
+    width: 4px;
+    height: 60px;
   }
-  .tan-process-arrow {
-    width: 12px;
-    height: 44px;
-  }
-  .tan-process-arrow span {
-    width: 3px;
-    height: 34px;
-    background: linear-gradient(180deg, #fff 12%, #ffd700 100%);
-  }
-  .tan-process-arrow span::after {
-    top: 31px;
-    left: -7px;
-    border-width: 7px 7px 0 7px;
-    border-left: none;
-    border-top: 10px solid #ffd700;
+
+  .connector::before {
+    background: linear-gradient(to bottom, #08fdd8, #00ffb2);
   }
 }

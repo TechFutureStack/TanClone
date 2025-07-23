@@ -1,4 +1,3 @@
-// src/components/SmarterConsensusSection.jsx
 import React from 'react';
 import './SmarterConsensusSection.css';
 
@@ -6,7 +5,7 @@ const SmarterConsensusSection = () => {
   const features = [
     {
       title: 'Block Per Reward',
-      description: 'Block Per Reward Proof of Stake (BPoS) powers TAN, combining PoS benefits with unique reward distribution for unparalleled scalability and efficient validation.',
+      description: 'Block Reward Proof of Stake powers TAN, combining PoS benefits with unique reward distribution for unparalleled scalability and efficient validation.',
       link: '#',
     },
     {
@@ -16,7 +15,7 @@ const SmarterConsensusSection = () => {
     },
     {
       title: 'Subsidy and Incentives',
-      description: 'At BPoS Block rewards are distributed for subsidy against burning of TAN and incentives for stakers, validators and hodlers.',
+      description: 'Rewards are distributed for subsidy against burning of TAN and incentives for stakers, validators and hodlers.',
       link: '#',
     },
     {
@@ -33,6 +32,7 @@ const SmarterConsensusSection = () => {
 
   const handleMouseMove = (e, index) => {
     const card = document.getElementById(`feature-${index}`);
+    if (!card) return;
     const rect = card.getBoundingClientRect();
     const x = ((e.clientX - rect.left) / rect.width) * 100;
     const y = ((e.clientY - rect.top) / rect.height) * 100;

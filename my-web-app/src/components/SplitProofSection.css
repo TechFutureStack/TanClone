@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;700&display=swap');
+
+.split-section-root {
+  display: flex;
+  height: 400px;
+  width: 100%;
+  background: linear-gradient(90deg, #4F1C51 0%, #17141D 100%);
+  border-radius: 0;
+  box-shadow: 0 4px 28px #2D155084;
+  overflow: hidden;
+  font-family: 'Poppins', sans-serif;
+}
+
+.split-section-left,
+.split-section-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.devnet-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 40px;
+  letter-spacing: 1.5px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.devnet-boxes {
+  position: relative;
+  width: 260px;
+  height: 112px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.devnet-box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #191838;
+  border-radius: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.44s cubic-bezier(.44,1.1,.45,1);
+  color: #A88DFE;
+  box-shadow: 0 4px 28px #8146e633;
+  opacity: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.devnet-box.active {
+  opacity: 1;
+  z-index: 1;
+  pointer-events: auto;
+}
+
+.devnet-box-title {
+  font-size: 1.16rem;
+  font-weight: 400;
+  opacity: 0.78;
+  font-family: 'Poppins', sans-serif;
+}
+
+.devnet-box-value {
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  margin-top: 4px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.split-section-right {
+  align-items: center;
+}
+
+.solidproof-logo {
+  font-size: 2.3rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 2px;
+  margin-bottom: 36px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.solidproof-logo span {
+  color: #A88DFE;
+  font-weight: 700;
+}
+
+.proof-badges {
+  display: flex;
+  gap: 16px;
+}
+
+.proof-badge {
+  background: #191838;
+  color: #A88DFE;
+  border-radius: 32px;
+  font-weight: 700;
+  padding: 8px 20px;
+  border: 1.9px solid #A88DFE99;
+  font-size: 1.12rem;
+  box-shadow: 0 2px 10px #7e40f844;
+  letter-spacing: 0.8px;
+  font-family: 'Poppins', sans-serif;
+}
+
+@media (max-width: 900px) {
+  .split-section-root {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .split-section-left,
+  .split-section-right {
+    padding: 35px 0;
+  }
+
+  .devnet-title,
+  .solidproof-logo {
+    font-size: 1.5rem;
+  }
+
+  .devnet-boxes {
+    height: 88px;
+  }
+}

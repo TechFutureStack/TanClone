@@ -1,0 +1,76 @@
+.splash-root {
+  position: fixed;
+  z-index: 9999;
+  width: 100vw;
+  height: 100vh;
+  top: 0; left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Use a see-through (transparent) background initially */
+  background: #210F37; /* semi-transparent */
+  opacity: 1;
+  pointer-events: none;
+  transition:
+    background 0.45s cubic-bezier(.6,.13,.43,1),
+    opacity 0.55s cubic-bezier(.6,.13,.43,1);
+}
+
+.bg-gone {
+  background: transparent;  /* Remove background to reveal underlying UI */
+  opacity: 1;
+}
+
+.splash-logo {
+  max-width: 52vw;
+  max-height: 52vh;
+  object-fit: contain;
+  display: block;
+  border-radius: 50%;
+  box-shadow: 0 4px 32px #210F37;
+  opacity: 1;
+  background: #210F37;
+  transform: translate3d(0,0,0) scale(1);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transition:
+    transform 0.8s cubic-bezier(.51,.05,.25,1.12),
+    left 0.8s cubic-bezier(.51,.05,.25,1.12),
+    top 0.8s cubic-bezier(.51,.05,.25,1.12),
+    max-width 0.8s,
+    max-height 0.8s,
+    border-radius 0.8s,
+    box-shadow 0.5s;
+  transform: translate3d(-50%, -50%, 0) scale(1);
+}
+
+.logo-fly {
+  left: 32px;
+  top: 20px;
+  max-width: 88px;
+  max-height: 88px;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px #c4ab6633;
+  transform: translate3d(0,0,0) scale(0.37);
+}
+
+.bg-gone .splash-logo {
+  /* Optional: fade out logo after it moves for extra polish */
+  animation: logo-final-fade 0.4s 0.8s forwards cubic-bezier(.45,1.4,.5,1);
+}
+
+@keyframes logo-final-fade {
+  to { opacity: 0; }
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px), (max-height: 450px) {
+  .logo-fly {
+    left: 10px;
+    top: 8px;
+    max-width: 54px;
+    max-height: 54px;
+    transform: translate3d(0,0,0) scale(0.7);
+  }
+}

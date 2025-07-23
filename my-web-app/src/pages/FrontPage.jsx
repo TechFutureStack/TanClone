@@ -1,6 +1,5 @@
-// src/pages/FrontPage.jsx
-import React from 'react';
-import SuperSeedBanner from '../components/SuperSeedBanner';
+import React, { useState, useEffect, useRef } from 'react';
+import SplashScreen from '../components/SplashScreen';
 import Header from '../components/Header';
 import HeroSection from '../components/HeroSection';
 import SmarterConsensusSection from '../components/SmarterConsensusSection';
@@ -9,27 +8,59 @@ import QuickOverview from '../components/QuickOverview';
 import TanHero from '../components/TanHero';
 import HowToUseTan from '../components/HowToUseTan';
 import TANAppSection from '../components/TanAppSection';
-import '../pages/FrontPage.css'; // Make sure this import is present
+import SplitProofSection from '../components/SplitProofSection';
+import DeepDiveIntoTAN from '../components/DeepDiveIntoTAN';
+import '../pages/FrontPage.css';
 
-const FrontPage = () => {
+export default function FrontPage() {
+  const [splashDone, setSplashDone] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
+  const popupTimerRef = useRef(null);
+
+  // Function to start/reset the 30s timer
+  const startPopupTimer = () => {
+    clearTimeout(popupTimerRef.current);
+    popupTimerRef.current = setTimeout(() => {
+      setShowPopup(true);
+    }, 15000); // 30 seconds
+  };
+
+  useEffect(() => {
+    // Start the first timer on load
+    startPopupTimer();
+    return () => clearTimeout(popupTimerRef.current);
+  }, []);
+
+  const handleClosePopup = () => {
+    setShowPopup(false);
+    startPopupTimer(); // Restart the timer when closed
+  };
+
   return (
-    <div className="front-page-layout">
-      <SuperSeedBanner />
-      <Header />
-      
-      {/* This new div will take up the remaining vertical space and center its content */}
-      <div className="main-content-area">
-        <HeroSection />
-      </div>
-      <SmarterConsensusSection />
-      <StackedCardRow />
-      <TanHero />
-      <QuickOverview />
-      <HowToUseTan />
-      <TANAppSection />
-      {/* ... Add other components for different sections of your page here */}
-    </div>
-  );
-};
+    <>
+      {!splashDone && <SplashScreen onFinish={() => setSplashDone(true)} />}
 
-export default FrontPage;
+      <div className="front-page-layout">
+        <Header />
+        <div className="main-content-area">
+          <HeroSection />
+        </div>
+        <SplitProofSection />
+        <DeepDiveIntoTAN />
+        <SmarterConsensusSection />
+        <StackedCardRow />
+        <TanHero />
+        <QuickOverview />
+        <HowToUseTan />
+        <TANAppSection />
+      </div>
+
+      {showPopup && (
+        <div className="sale-popup">
+          <span>🚀 Super Sale is Live! Why Waiting? Join us soon!</span>
+          <button className="close-popup" onClick={handleClosePopup}>×</button>
+        </div>
+      )}
+    </>
+  );
+}

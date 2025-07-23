@@ -1,5 +1,5 @@
 .quick-container {
-  background: #18230F;
+  background: linear-gradient(90deg, #4F1C51 0%, #17141D 100%);
   padding: 60px 20px;
   text-align: center;
   color: white;
@@ -20,7 +20,7 @@
 
 .quick-card {
   background: transparent;
-  border: 1.5px solid #18230F;
+  border: 1.5px solid #4F1C51;
   border-radius: 20px;
   padding: 30px 20px 20px;
   width: 240px;

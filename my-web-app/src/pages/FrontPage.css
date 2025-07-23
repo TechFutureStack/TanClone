@@ -17,5 +17,44 @@
   width: 100%; /* Ensure it spans full width */
   box-sizing: border-box;
   /* NEW: Add padding-top to push content below the fixed header/banner */
-  padding-top: 150px; /* Adjust this value based on the combined height of your top banner and navigation bar */
+  padding-top: 0px; /* Adjust this value based on the combined height of your top banner and navigation bar */
+}
+
+.sale-popup {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: #ff3c6a;
+  color: white;
+  padding: 16px 22px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 500;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  animation: fadeInUp 0.4s ease;
+}
+
+.close-popup {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 22px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-left: auto;
+}
+
+@keyframes fadeInUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
